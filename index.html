@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Store Rexz NYX</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #007bff, #00c4ff);
+      color: white;
+      padding: 50px 15px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      opacity: 0;
+      transform: translateY(-100px);
+      animation: turun 1s ease-out forwards;
+    }
+
+    @keyframes turun {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header p {
+      font-size: 1rem;
+      margin-top: 40px;
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+      animation-delay: 0.8s;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .main-btn {
+      display: inline-block;
+      background: #fff;
+      color: #007bff;
+      padding: 20px 30px;
+      margin-top: 20px;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 8px rgba(0,0,0,0.2);
+      transform: scale(0.9);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .main-btn:focus { outline: none; }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      transform: scale(0.90);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .card img {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 2rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+    }
+
+    .product {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      text-align: left;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      transform: scale(0.90);
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    .productress {
+      background: #E66CFF;
+      border-radius: 20px;
+      padding: 25px;
+      text-align: left;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      transform: scale(0.90);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .product img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .product h3 {
+      font-size: 2rem;
+      margin: 5px 0;
+    }
+  
+    .product ppk {
+      font-size: 2.5rem;
+    }
+   
+    .hrg {
+      display: inline-block;
+      font-size: 2rem;
+    }
+
+    .p {
+      display: inline-block;
+      font-size: 0.9rem;
+    }
+
+    .product .sub-btn {
+      display: inline-block;
+      padding: 20px 10px;
+      margin: 2px;
+      border-radius: 20px;
+      font-size: 0.90rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .cs-btn {
+      background: #007bff;
+      color: white;
+    }
+
+    .cs-btn:hover {
+      background: #0056b3;
+    }
+
+    .buy-btn {
+      background: #28a745;
+      color: white;
+    }
+
+    .buy-btn:hover {
+      background: #1e7e34;
+    }
+
+    /* Reseller Card */
+    .reseller-card {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+
+    .reseller-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .reseller-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px 0;
+    }
+
+    .reseller-card ul li {
+      font-size: 1rem;
+      margin: 8px 0;
+    }
+
+    .reseller-box {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 15px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .reseller-box p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .reseller-btn {
+      display: inline-block;
+      background: #fff;
+      color: #2575fc;
+      padding: 12px 25px;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .reseller-btn:hover {
+      background: #f1f1f1;
+    }
+
+    .active-glow {
+      transform: scale(0.95);
+      box-shadow: 0 0 15px rgba(0, 123, 255, 0.75);
+      z-index: 1;
+    }
+
+    section {
+      padding: 30px 15px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    footer {
+      background: #222;
+      color: #ddd;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin: 3px 0;
+    }
+
+    /* Efek Glitter Title */
+    .title-glitter {
+      position: relative;
+      display: inline-block;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #007bff;
+      text-shadow: 0 0 8px #00c4ff, 0 0 15px #007bff;
+      animation: glowPulse 2s infinite alternate;
+      margin: 0 auto;
+    }
+
+    .title-glitter .sparkles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .title-glitter .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00c4ff, 0 0 20px #007bff;
+      animation: sparkleAnim 2s infinite;
+      opacity: 0;
+    }
+
+    .title-glitter .sparkle:nth-child(1) { top: -20px; left: 10%; animation-delay: 0s; }
+    .title-glitter .sparkle:nth-child(2) { top: 10%; left: 90%; animation-delay: 0.5s; }
+    .title-glitter .sparkle:nth-child(3) { top: 100%; left: 30%; animation-delay: 1s; }
+    .title-glitter .sparkle:nth-child(4) { top: 50%; left: -25px; animation-delay: 1.5s; }
+    .title-glitter .sparkle:nth-child(5) { top: -15px; left: 70%; animation-delay: 2s; }
+
+    @keyframes glowPulse {
+      from {
+        text-shadow: 0 0 5px #00c4ff, 0 0 10px #007bff, 0 0 20px #007bff;
+      }
+      to {
+        text-shadow: 0 0 15px #00c4ff, 0 0 30px #007bff, 0 0 45px #00c4ff;
+      }
+    }
+
+    @keyframes sparkleAnim {
+      0%   { transform: scale(0.5); opacity: 0; }
+      50%  { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Produk Digital By Rexz NYX</h1>
+    <p>🚀 Kualitas Premium - Harga Merakyat! 🚀</p>
+    <a href="#beli" class="main-btn">Beli Sekarang</a>
+  </header>
+
+  <section>
+    <h2 style="text-align:center; font-size:2rem;">Mengapa Memilih Kami?</h2>
+    <div class="features">
+      <div class="card">
+        <img src="kualitas.jpg" alt="Kualitas">
+        <h3>Kualitas Premium</h3>
+        <p>Memiliki kualitas terjamin dan sudah terpercaya dengan 100+ testimoni dari pembeli kami.</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4290/4290854.png" alt="Harga">
+        <h3>Harga Terjangkau</h3>
+        <p>Solusi hemat dengan kualitas maksimal, cocok untuk semua kalangan.</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/744/744502.png" alt="Layanan">
+        <h3>Layanan Cepat</h3>
+        <p>Kami melayani pengiriman cepat dan respon customer support 24/7.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Produk Unggulan -->
+  <section>
+    <h2 class="title-glitter" style="text-align:center;">
+      Produk Unggulan Kami
+      <span class="sparkles">
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+      </span>
+    </h2>
+    <div class="products">
+      <div class="product">
+        <ppk><b>Panel Pterodactyl</b></ppk>
+        <div class="hrg">Rp 1.000-5.000</div>
+        <div class="p">/bulan</div>
+        <p>✔ 1GB - 10GB RAM</p>
+        <p>✔ Aktif 24/7</p>
+        <p>✔ Custom Username</p>
+        <p>✔ Support Multi Bot</p>
+        <p>✔ Garansi 15h</p>
+        <p>✔ Free Claim Garansi</p>
+        <a href="https://t.me/csrexz?text=Halo!%20saya%20butuh%20bantuan%20Customer%20Service" class="sub-btn cs-btn">Customer Service</a>
+        <a href="https://t.me/rexznyx?text=Halo!%20saya%20tertarik%20dengan%20paket%201GB~10GB-Rp1.000~5.000/bulan" class="sub-btn buy-btn">Beli Sekarang</a>
+      </div>
+
+      <div class="product">
+        <ppk><b>Panel Unlimited</b></ppk>
+        <div class="hrg">Rp 6.000</div>
+        <div class="p">/bulan</div>
+        <p>✔ Unlimited RAM</p>
+        <p>✔ Unlimited CPU</p>
+        <p>✔ Premium Support</p>
+        <p>✔ Custom Username</p>
+        <p>✔ Aktif 24/7</p>
+        <p>✔ Support Multi Bot</p>
+        <p>✔ Garansi 15h</p>
+        <p>✔ Free Claim Garansi</p>
+        <a href="https://t.me/csrexz?text=Halo!%20saya%20butuh%20bantuan%20Customer%20Service" class="sub-btn cs-btn">Customer Service</a>
+        <a href="https://t.me/rexznyx?text=Halo!%20saya%20tertarik%20dengan%20paket%20Unlimited-Rp6.000/bulan" class="sub-btn buy-btn">Beli Sekarang</a>
+      </div>
+
+      <!-- Card Reseller -->
+      <div class="reseller-card">
+        <h3>💰 Program Reseller</h3>
+        <ul>
+          <li>✔ Bisa jual panel</li>
+          <li>✔ Untung Berkali" Lipat</li>
+          <li>✔ Panel Berkualitas</li>
+          <li>✔ Spek VPS Tingkat Lanjut</li>
+          <li>✔ Grup Telegram Eksklusif</li>
+          <li>✔ Dashboard analytics</li>
+        </ul>
+        <div class="reseller-box">
+          <p>🚀 <b>Jadi Reseller?</b><br>
+            Harga mulai <b>3.000</b> perbulan<br>
+            Hingga <b>10.000</b> permanen
+          </p>
+          <a href="https://t.me/rexznyx?text=Halo!%20saya%20tertarik%20untuk%20gabung%20Reseller%20Panel,%20mohon%20untuk%20info%20lebih%20lanjut" class="reseller-btn">Gabung Reseller</a>
+        </div>
+        
+              <div class="reseller-card">
+        <h3>🌐 Paket Admin Panel</h3>
+        <ul>
+          <li>✔ Bisa Open Reseller Panel</li>
+          <li>✔ Akses Penuh Khusus Admin</li>
+          <li>✔ Bisa jual panel</li>
+          <li>✔ Untung Berkali" Lipat</li>
+          <li>✔ Panel Berkualitas</li>
+          <li>✔ Spek VPS Tingkat Lanjut</li>
+          <li>✔ Grup Telegram Eksklusif</li>
+          <li>✔ Dashboard analytics</li>
+        </ul>
+        <div class="reseller-box">
+          <p>🚀 <b>Gabung Sebagai Admin?</b><br>
+            Harga mulai <b>6.000</b> perbulan<br>
+            Hingga <b>12.000</b> permanen
+          </p>
+          <a href="https://t.me/rexznyx?text=Halo!%20saya%20tertarik%20untuk%20gabung%20Admin%20Panel%20mohon%20untuk%20info%20lebih%20lanjut" class="reseller-btn">Gabung Admin</a>
+        </div>
+        </div>
+        </section>
+      
+      <!-- Nokos -->
+     <div class="products">
+      <div class="product">
+        <ppk><b>Nokos All Negara</b></ppk>
+        <div class="hrg">Rp 6.000</div>
+        <div class="p">(indo)</div>
+        <p>✔ All OTP</p>
+        <p>✔ Support All Aplikasi</p>
+        <p>✔ Nokos Whatsapp</p>
+        <p>✔ Nokos Telegram</p>
+        <p>✔ Aktif 24/7</p>
+        <p>✔ Support FC</p>
+        <a href="https://t.me/csrexz?text=Halo!%20saya%20butuh%20bantuan%20Customer%20Service" class="sub-btn cs-btn">Customer Service</a>
+        <a href="https://t.me/rexznyx?text=Halo!%20saya%20tertarik%20dengan%20produk%20Nokos%20All%20Negara%20mohon%20untuk%20info%20lebih%20lanjut" class="sub-btn buy-btn">Beli Sekarang</a>
+        </div>
+              <div class="product">
+        <ppk><b>Jasa Rename SC</b></ppk>
+        <div class="hrg">Rp 10.000</div>
+        <div class="p">(full rename)</div>
+        <p>✔ Custome Request</p>
+        <p>✔ Bebas Pilih Gaya</p>
+        <p>✔ Script Whatsapp</p>
+        <p>✔ Script Telegram</p>
+        <p>✔ Aktif 24/7</p>
+        <p>✔ Anti Delay</p>
+        <a href="https://t.me/csrexz?text=Halo!%20saya%20butuh%20bantuan%20Customer%20Service" class="sub-btn cs-btn">Customer Service</a>
+        <a href="https://t.me/rexznyx?text=Halo!%20saya%20tertarik%20dengan%20produk%20Paket%20%20Rename%20Sript-10.000" class="sub-btn buy-btn">Beli Sekarang</a>
+        </div>
+        </div>
+        </section>
+
+  <footer>
+    <p>&copy; 2025 Rexz NYX | Semua Hak Dilindungi</p>
+    <p>Hubungi kami: t.me/csrexz (Customer Service)</p>
+  </footer>
+
+  <script>
+    const clickableElements = document.querySelectorAll('.main-btn, .card, .product');
+    clickableElements.forEach(el => {
+      el.addEventListener('click', () => {
+        clickableElements.forEach(e => e.classList.remove('active-glow'));
+        el.classList.add('active-glow');
+      });
+    });
+  </script>
+</body>
+</html>>
